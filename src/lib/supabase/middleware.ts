@@ -4,6 +4,25 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+
+
+
+/**
+ * MIDDLEWARE SUPABASE - Gestion de l'authentification et des redirections
+ *
+ * Ce fichier contient la logique middleware qui s'exécute sur chaque requête
+ * pour vérifier l'authentification et gérer les redirections automatiques.
+ * Il s'assure que les utilisateurs non connectés sont redirigés vers la page de connexion.
+ */
+
+/**
+ * Met à jour la session utilisateur et gère les redirections d'authentification
+ *
+ * Cette fonction est appelée automatiquement par Next.js sur chaque requête.
+ * Elle vérifie si l'utilisateur est authentifié et le redirige si nécessaire.
+ *
+ * @param request - La requête Next.js entrante
+ * @returns NextResponse avec redirection ou continuation normale
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
